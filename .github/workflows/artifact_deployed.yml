@@ -15,14 +15,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Print artifact_path
+        id: job_one
         run: echo  The path is ${{ inputs.artifact_path }}
        
-      - name: Notify slack success
-        if: success()
-        env:
-         SLACK_BOT_TOKEN: ${{ secrets.SLACK_NOTIFICATIONS_BOT_TOKEN }}
-        uses: voxmedia/github-action-slack-notify-build@v1
-        with:
-         channel: app-alerts
-         status: SUCCESS
-         color: good
+      - name: Check on failures
+        if: job.steps.job_one.status == success()
+        run: |
+         curl -X POST -H 'Content-type: application/json' --data '{"text":"Hello, World!"}' https://hooks.slack.com/services/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
