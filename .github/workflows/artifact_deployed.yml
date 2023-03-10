@@ -19,6 +19,6 @@ jobs:
         run: echo  The path is ${{ inputs.artifact_path }}
        
       - name: Check on failures
-        if: steps.job_one.outcome != 'success'
+        if: steps.job_one.outcome == 'success'
         run: |
          curl -X POST -H 'Content-type: application/json' --data '{"text":"Hello, World!"}' https://hooks.slack.com/services/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
