@@ -20,7 +20,7 @@ jobs:
       - name: Notify slack success
         if: success()
         env:
-         SLACK_BOT_TOKEN: xapp-1-A04TPAK73TK-4928616816947-6c145404cad69c4b7e2d0841cdd83dada009ff9fbc6509a2cfc395cc790c5b32
+         SLACK_BOT_TOKEN: ${{ secrets.SLACK_NOTIFICATIONS_BOT_TOKEN }}
         uses: voxmedia/github-action-slack-notify-build@v1
         with:
          channel: app-alerts
