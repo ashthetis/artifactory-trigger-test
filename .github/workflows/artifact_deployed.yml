@@ -23,4 +23,4 @@ jobs:
          SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
         if: steps.job_one.outcome == 'success'
         run: |
-         curl -X POST -H 'Content-type: application/json' --data '{"text":"Hello, World!"}' "${SLACK_BOT_TOKEN}"
+         curl -X POST -H 'Content-type: application/json' --data '{"text":"this is a test"}' "${SLACK_BOT_TOKEN}"
